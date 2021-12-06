@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "529828707013",
+    "project_id": "mumo-91024",
+    "storage_bucket": "mumo-91024.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:529828707013:android:3dbebdcb694b5ec152ceac",
+        "android_client_info": {
+          "package_name": "com.venumadhav.mumo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "529828707013-qlqmdmlgdk0vomb6t7fecufp3lhk0hvi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.venumadhav.mumo",
+            "certificate_hash": "6133a5507c248880a3a3bb7dff9b030144ecd7e5"
+          }
+        },
+        {
+          "client_id": "529828707013-jb2bt1bc44g7jolio5n9im7nl4rbqf6f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBGEgPQeI6DX9whJscyEJZmSatSePFxWUI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "529828707013-jb2bt1bc44g7jolio5n9im7nl4rbqf6f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

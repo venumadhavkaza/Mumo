@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <item
+        android:id="@+id/music"
+        android:icon="@drawable/ic_wform"
+        android:title="Music"
+        android:color="#0F0326"
+        android:iconTint="#0F0326"
+        />
+
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/ic_action_name"
+        android:title="Mood"
+        android:checked="true"
+        android:color="#2C5530"
+        android:iconTint="#0F0326"/>
+    <item
+        android:id="@+id/profile"
+        android:icon="@drawable/ic_chat"
+        android:title="Chat"
+        android:color="#51A3A3"/>
+
+</menu>
+
