@@ -2,6 +2,8 @@
 Mood Based Music Recommendation Project Based on Spotify SDK for android
 ## Features 
 #### A very simple and subtle UI design with very close attention to Calming colors and pleasing animations. ✅
+#### Firebase Authentication and Realtime Database. ✅
+#### Deta Microservice. ✅
 #### Reduce the time that user generally spends on looking for the right song. ✅
 #### The Machine Learning model is coded and deployed. ✅
 #### Songs suggested based on the user’s mood. ✅
