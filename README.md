@@ -9,8 +9,17 @@ Mood Based Music Recommendation Project Based on Spotify SDK for android
 #### SharedPlay Feature to accomodote shared music session among users. ✅
 #### Ready to Deploy app for a wide range of users. ✅
 
-#Mumo Walkthrough
+## Mumo Screens 
+
+![mainss](https://user-images.githubusercontent.com/83460366/146199716-80006c0b-faa3-4133-a990-86ad82764771.jpeg) 
+
+![2nd](https://user-images.githubusercontent.com/83460366/146199858-4dc74091-cdb9-43ee-a052-a1b4b3b0f05d.jpeg)
+
+![playerss](https://user-images.githubusercontent.com/83460366/146200137-6359773b-63ba-408d-8e3b-ae17509f9991.jpeg)
+
+
+## Mumo Walkthrough
 https://drive.google.com/file/d/1Uc73Q_71PjzBjRxNOlW7Y4i8sxPvlA2w/view?usp=sharing
 
-#Sharedplay
+## Sharedplay
 https://drive.google.com/file/d/1EYxXYa4oNjPF3gdmnukG7FdDcGDL_bHL/view?usp=sharing
