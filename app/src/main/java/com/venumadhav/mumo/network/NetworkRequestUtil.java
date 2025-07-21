@@ -37,33 +37,43 @@ public class NetworkRequestUtil extends AsyncTask<Dummyclass,Void,PeekaLinkRespo
     public static final MediaType JSON = MediaType.get("application/json; charset=utf-8");
     public static String imguri = "";
 
+    private static final OkHttpClient CLIENT = new OkHttpClient.Builder().build();
+    private static final Gson GSON = new GsonBuilder().create();
+
 
 
 
 
     public static PeekaLinkResponse post(String url, RequestPeekalink json) throws IOException {
-
-//            if (response.isSuccessful())
-//            return gson.fromJson(Objects.requireNonNull(response.body()).string(), PeekaLinkResponse.class);
-//
+        RequestBody body = RequestBody.create(JSON, GSON.toJson(json));
+        Request request = new Request.Builder()
+                .url(url)
+                .addHeader("X-API-Key", "5bd900ca-7897-4fcb-a98e-349f1e6dc4ae")
+                .post(body)
+                .build();
+        try (Response response = CLIENT.newCall(request).execute()) {
+            if (response.isSuccessful()) {
+                return GSON.fromJson(Objects.requireNonNull(response.body()).string(),
+                        PeekaLinkResponse.class);
+            }
+        }
         return new PeekaLinkResponse();
     }
 
 
     @Override
     protected PeekaLinkResponse doInBackground(Dummyclass... dummyclasses) {
-        GsonBuilder builder = new GsonBuilder();
-        OkHttpClient client = new OkHttpClient.Builder().build();
-        Gson gson = builder.create();
-        RequestBody body = RequestBody.create(JSON, gson.toJson(dummyclasses[0].getRequestPeekalink()));
+        RequestBody body = RequestBody.create(JSON,
+                GSON.toJson(dummyclasses[0].getRequestPeekalink()));
         Request request = new Request.Builder()
                 .url(dummyclasses[0].getUrl())
                 .addHeader("X-API-Key", "5bd900ca-7897-4fcb-a98e-349f1e6dc4ae")
                 .post(body)
                 .build();
-        try(Response response = client.newCall(request).execute()){
+        try (Response response = CLIENT.newCall(request).execute()) {
             Log.i("hi","hi");
-            return gson.fromJson(Objects.requireNonNull(response.body()).string(), PeekaLinkResponse.class);
+            return GSON.fromJson(Objects.requireNonNull(response.body()).string(),
+                    PeekaLinkResponse.class);
            //Log.i("Tag",peekaLinkResponse.getImage().getUrl());
 //            imguri = peekaLinkResponse.getImage().getUrl();
         } catch (IOException e) {
