@@ -8,6 +8,7 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -68,19 +69,19 @@ public class musiclist extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     public  static SpotifyAppRemote mSpotifyAppRemote;
-    Handler handler  = new Handler();
+    Handler handler = new Handler(Looper.getMainLooper());
     Runnable runnable;
     private static final String CLIENT_ID = "100d90984cc142febb47cdc0994d4e1a";
     private static final String REDIRECT_URI = "http://com.venumadhav.mumo/callback";
-    private static CircleImageView playerpic;
-    private static TextView trackname;
-    private static TextView artist;
-    private static Button playpause;
-    private static Button seekforward10;
-    private static Button seekback10;
-    private static Button seeknext;
-    private static Button seekback;
-    private static SeekBar seekBar;
+    private CircleImageView playerpic;
+    private TextView trackname;
+    private TextView artist;
+    private Button playpause;
+    private Button seekforward10;
+    private Button seekback10;
+    private Button seeknext;
+    private Button seekback;
+    private SeekBar seekBar;
     private Button viewinSpotify;
     private TextView runtime;
     private TextView runningtime;
@@ -252,7 +253,7 @@ public class musiclist extends Fragment {
                                    settofirebase("https://i.scdn.co/image/"+track.imageUri.toString().substring(22, track.imageUri.toString().length() - 2),track.name);
                                }
 
-                           Picasso.get().load("https://i.scdn.co/image/"+track.imageUri.toString().substring(22, track.imageUri.toString().length() - 2)).into(playerpic);
+                           Picasso.get().load("https://i.scdn.co/image/"+track.imageUri.toString().substring(22, track.imageUri.toString().length() - 2)).fit().into(playerpic);
                            playerpic.startAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.layouttransit));
                            imurimap.put(im.toString(),1);
 
@@ -378,6 +379,17 @@ public class musiclist extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        if (runnable != null) {
+            handler.removeCallbacks(runnable);
+        }
+        if (mSpotifyAppRemote != null && mSpotifyAppRemote.isConnected()) {
+            SpotifyAppRemote.disconnect(mSpotifyAppRemote);
+        }
     }
 
     public static void buttonEffect(View button){

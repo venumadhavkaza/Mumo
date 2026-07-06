@@ -88,14 +88,13 @@ public class mood extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String CLIENT_ID = "100d90984cc142febb47cdc0994d4e1a";
     private static final String REDIRECT_URI = "http://com.venumadhav.mumo/callback";
-    private SpotifyAppRemote mSpotifyAppRemote;
     private static final String BUNDLE_RECYCLER_LAYOUT = "mood.recentlyplayedrecyler.layout";
     private boolean dataSet = false;
     private FirebaseAuth mAuth;
     private BottomSheetBehavior bottomSheetBehavior;
     private BubbleTabBar bubbleTabBar;
     static String test="haihello";
-    static String myemail = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+    static String myemail = "";
     private RecentlyplayedAdapter recentlyplayedAdapter;
     private RecyclerView recentlyplayedrecyler;
     private final List<RecentlyplayedList> recentlyplayedLists = new ArrayList<>();
@@ -179,8 +178,8 @@ public class mood extends Fragment {
             String personEmail = acct.getEmail();
             String personId = acct.getId();
             Uri personPhoto = acct.getPhotoUrl();
-            Picasso.get().load(personPhoto).into(dp);
-            Picasso.get().load(personPhoto).into(dp2);
+            Picasso.get().load(personPhoto).fit().into(dp);
+            Picasso.get().load(personPhoto).fit().into(dp2);
             namepop.setText(personName);
             emailpop.setText(personEmail);
             tv.setText(getTimeofday()+" "+personGivenName+" !");
@@ -342,9 +341,6 @@ public class mood extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        if(mSpotifyAppRemote.isConnected()){
-            SpotifyAppRemote.disconnect(mSpotifyAppRemote);
-        }
     }
 
     @Override

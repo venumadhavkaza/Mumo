@@ -85,7 +85,7 @@ public class Chat extends AppCompatActivity {
         getUserMobile = MemoryData.getData(Chat.this);
 
         nameTV.setText(getName);
-        Picasso.get().load(getProfilePic).into(profilePic);
+        Picasso.get().load(getProfilePic).fit().into(profilePic);
 
         chattingRecyclerView.setHasFixedSize(true);
         chattingRecyclerView.setLayoutManager(new LinearLayoutManager(Chat.this));
