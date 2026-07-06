@@ -19,3 +19,12 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+# Gson deserializes network responses via reflection using field names/annotations,
+# so the model classes and their signatures/annotations must survive shrinking.
+-keepattributes Signature
+-keepattributes *Annotation*
+-keep class com.venumadhav.mumo.network.** { *; }
+-keep class * implements com.google.gson.TypeAdapterFactory
+-keep class * implements com.google.gson.JsonSerializer
+-keep class * implements com.google.gson.JsonDeserializer

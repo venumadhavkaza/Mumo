@@ -157,7 +157,7 @@ public class userprofile extends Fragment {
 
 //
                 final String profilepicUrl = snapshot.child("users").child(mobile).child("profile_pic").getValue(String.class);
-                Picasso.get().load(profilepicUrl).into(userProfilePic);
+                Picasso.get().load(profilepicUrl).fit().into(userProfilePic);
                     progressDialog.dismiss();
 //
             }

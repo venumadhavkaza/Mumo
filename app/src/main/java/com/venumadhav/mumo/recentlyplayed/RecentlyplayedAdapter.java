@@ -34,14 +34,14 @@ public class RecentlyplayedAdapter extends RecyclerView.Adapter<RecentlyplayedAd
     @NonNull
     @Override
     public RecentlyplayedAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-      return new RecentlyplayedAdapter.MyViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.lastplayed_adapter_layout, null));
+      return new RecentlyplayedAdapter.MyViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.lastplayed_adapter_layout, parent, false));
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecentlyplayedAdapter.MyViewHolder holder, int position) {
         RecentlyplayedList list2 = recentlyplayedlists.get(position);
         if(!list2.getUri().isEmpty()){
-            Picasso.get().load(list2.getUri()).into(holder.imginsiderec);
+            Picasso.get().load(list2.getUri()).fit().into(holder.imginsiderec);
         }
         setAnimation(holder.itemView, position);
     }

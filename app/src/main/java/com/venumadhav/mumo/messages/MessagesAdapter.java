@@ -34,7 +34,7 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.MyView
     @NonNull
     @Override
     public MessagesAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new MyViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.messages_adapter_layout, null));
+        return new MyViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.messages_adapter_layout, parent, false));
     }
 
     @Override
@@ -43,7 +43,7 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.MyView
         MessagesList list2 = messagesLists.get(position);
 
         if(!list2.getProfilePic().isEmpty()){
-            Picasso.get().load(list2.getProfilePic()).into(holder.profilePic);
+            Picasso.get().load(list2.getProfilePic()).fit().into(holder.profilePic);
         }
 
         holder.name.setText(list2.getName());
