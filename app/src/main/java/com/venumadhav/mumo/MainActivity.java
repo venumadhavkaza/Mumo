@@ -15,7 +15,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.google.android.material.color.DynamicColors;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -57,15 +56,15 @@ public class MainActivity extends AppCompatActivity {
     private static final String REDIRECT_URI = "http://com.venumadhav.mumo/callback";
     private static final String CLIENT_ID = "100d90984cc142febb47cdc0994d4e1a";
     private SpotifyAppRemote mSpotifyAppRemote;
-    public static String mobileno = "8374614967";
-    //public static String mobileno = "8639003374";
-    //public static String mobileno = "8500174189";
+    // Firebase key identifying the signed-in user. Set from the Google account's stable
+    // unique id in savetofirebase() - it must never be a hardcoded literal, or every
+    // installer collides into the same Firebase user record.
+    public static String mobileno = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        DynamicColors.applyIfAvailable(this);
         String dwci = "529828707013-jb2bt1bc44g7jolio5n9im7nl4rbqf6f.apps.googleusercontent.com";
         //FirebaseAuth.getInstance().signOut();
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -217,7 +216,8 @@ public class MainActivity extends AppCompatActivity {
             String personEmail = acct.getEmail();
             String personId = acct.getId();
             Uri personPhoto = acct.getPhotoUrl();
-            DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://mumo-91024-default-rtdb.firebaseio.com/");
+            mobileno = personId;
+            DatabaseReference databaseReference = MumoDatabase.getReference();
 
 
             databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -229,7 +229,7 @@ public class MainActivity extends AppCompatActivity {
                     else{
                         databaseReference.child("users").child(mobileno).child("email").setValue(personEmail);
                         databaseReference.child("users").child(mobileno).child("name").setValue(personName);
-                        databaseReference.child("users").child(mobileno).child("profile_pic").setValue(personPhoto.toString());
+                        databaseReference.child("users").child(mobileno).child("profile_pic").setValue(personPhoto != null ? personPhoto.toString() : "");
 
                         Toast.makeText(MainActivity.this, "Success to firebase", Toast.LENGTH_SHORT).show();
                     }

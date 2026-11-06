@@ -5,9 +5,8 @@
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F7DC"
+    android:background="?attr/colorSurface"
     android:tag="music"
-    android:theme="@style/Theme.Material3.Light"
     tools:context=".musiclist">
 
     <androidx.constraintlayout.widget.Guideline
@@ -50,7 +49,7 @@
             android:fontFamily="@font/opensansemibold"
             android:maxLines="1"
             android:text="Artist"
-            android:textColor="@color/black"
+            android:textColor="?attr/colorOnSurface"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -67,7 +66,7 @@
             android:gravity="center"
             android:maxLines="1"
             android:text="Track Name"
-            android:textColor="@color/black"
+            android:textColor="?attr/colorOnSurface"
             android:textSize="23sp"
 
             app:layout_constraintEnd_toEndOf="parent"
@@ -175,7 +174,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/backicon"
-            android:backgroundTint="@color/black"
+            android:backgroundTint="?attr/colorOnSurface"
             android:clickable="true"
             tools:ignore="SpeakableTextPresentCheck" />
 
@@ -186,7 +185,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:background="@drawable/ic_baseline_fast_rewind_24"
-            android:backgroundTint="@color/black"
+            android:backgroundTint="?attr/colorOnSurface"
             android:clickable="true"
             tools:ignore="SpeakableTextPresentCheck" />
 
@@ -198,7 +197,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/ic_baseline_play_arrow_24"
-            android:backgroundTint="@color/black"
+            android:backgroundTint="?attr/colorOnSurface"
             android:clickable="true"
             android:hapticFeedbackEnabled="true"
             tools:ignore="SpeakableTextPresentCheck" />
@@ -210,7 +209,7 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
             android:background="@drawable/ic_baseline_fast_forward_24"
-            android:backgroundTint="@color/black"
+            android:backgroundTint="?attr/colorOnSurface"
 
             android:clickable="true"
             tools:ignore="SpeakableTextPresentCheck" />
@@ -221,7 +220,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/next"
-            android:backgroundTint="@color/black"
+            android:backgroundTint="?attr/colorOnSurface"
             android:clickable="true"
             android:focusable="true"
             tools:ignore="SpeakableTextPresentCheck" />
@@ -234,7 +233,7 @@
         android:fontFamily="@font/dancingscriptbold"
         android:gravity="center"
         android:text="-: Mumo x Spotify :-"
-        android:textColor="@color/black"
+        android:textColor="?attr/colorOnSurface"
         android:textSize="23sp"
         app:flow_horizontalAlign="center"
         app:layout_constraintBottom_toTopOf="@+id/playerpic"
@@ -259,7 +258,7 @@
         android:padding="8dp"
         android:text="View in Spotify"
         android:textAllCaps="false"
-        android:textColor="@color/black"
+        android:textColor="@android:color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

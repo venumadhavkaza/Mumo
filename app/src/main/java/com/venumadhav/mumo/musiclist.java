@@ -21,7 +21,6 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.material.color.DynamicColors;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -87,7 +86,7 @@ public class musiclist extends Fragment {
     private TextView runningtime;
     public static Track track;
     public static boolean ispause;
-    public static DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://mumo-91024-default-rtdb.firebaseio.com/");
+    public static DatabaseReference databaseReference = MumoDatabase.getReference();
 
     public static HashMap<String,Integer> imurimap = new HashMap<>();
 
@@ -136,7 +135,6 @@ public class musiclist extends Fragment {
         seekBar = view.findViewById(R.id.seekbar);
         runtime = view.findViewById(R.id.runtime);
         runningtime = view.findViewById(R.id.runningtime);
-        DynamicColors.applyIfAvailable(getActivity());
         viewinSpotify = view.findViewById(R.id.spotify_btn);
 
 

@@ -46,7 +46,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
-import com.google.android.material.color.DynamicColors;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
@@ -98,7 +97,7 @@ public class mood extends Fragment {
     private RecentlyplayedAdapter recentlyplayedAdapter;
     private RecyclerView recentlyplayedrecyler;
     private final List<RecentlyplayedList> recentlyplayedLists = new ArrayList<>();
-    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://mumo-91024-default-rtdb.firebaseio.com/");
+    DatabaseReference databaseReference = MumoDatabase.getReference();
     private ScrollView scrollView22;
     //private SlideUp slideUp;
     Context thiscontext;
@@ -149,7 +148,6 @@ public class mood extends Fragment {
         GridLayout gl = view.findViewById(R.id.gridLayout);
         rellay.startAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.layouttransit));
         gl.startAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.downup));
-        DynamicColors.applyIfAvailable(getActivity());
         tv.setText("Good Morning ");
         CardView vh = view.findViewById(R.id.cv1);
         ImageView vhimg = view.findViewById(R.id.vh);
@@ -212,7 +210,8 @@ public class mood extends Fragment {
                                     dataSet = false;
                                     //Toast.makeText(getContext(), getemail + "", Toast.LENGTH_SHORT).show();
                                     final String getName = dataSnapshot.child("tracks").getValue(String.class);
-                                    getSonguri = dataSnapshot.child("uri").getValue(String.class);
+                                    final String uriValue = dataSnapshot.child("uri").getValue(String.class);
+                                    getSonguri = uriValue != null ? uriValue : "";
                                     if (!getSonguri.isEmpty()) {
                                         RecentlyplayedList recentlyplayedList = new RecentlyplayedList(getSonguri);
                                         recentlyplayedLists.add(recentlyplayedList);

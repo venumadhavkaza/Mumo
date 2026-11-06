@@ -12,17 +12,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
 
-        android:theme="@style/Theme.MaterialComponents">
+        android:theme="@style/Theme.Mumo">
         <activity
             android:name=".chat.Chat"
-            android:theme="@style/Theme.Material3.Light.NoActionBar"
             android:windowSoftInputMode="adjustResize"
             android:exported="false" />
         <activity
             android:name=".splashscreen"
-            android:exported="true"
-
-            android:theme="@style/Theme.AppCompat">
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -31,12 +28,10 @@
         </activity>
         <activity
             android:name=".MainActivity2"
-            android:exported="true"
-            android:theme="@style/Theme.AppCompat" />
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
-            android:exported="true"
-            android:theme="@style/DemoTheme" />
+            android:exported="true" />
     </application>
 
 </manifest>

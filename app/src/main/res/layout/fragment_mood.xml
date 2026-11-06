@@ -29,7 +29,7 @@
             android:layout_marginStart="40dp"
             android:fontFamily="@font/dancingscriptbold"
             android:text="Good Morning Venu !"
-            android:textColor="@color/black"
+            android:textColor="?attr/colorOnSurface"
             android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -225,7 +225,7 @@
             android:fontFamily="@font/dancingscriptbold"
             android:gravity="center"
             android:text="-: The Mumo Project :-"
-            android:textColor="@color/black"
+            android:textColor="?attr/colorOnSurface"
             android:textSize="25sp" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
@@ -247,7 +247,7 @@
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:layout_marginStart="20dp"
-            android:textColor="@color/black"
+            android:textColor="?attr/colorOnSurface"
             android:fontFamily="@font/dancingscriptsemibold"
             android:text="Your Mumo Chain :-">
 

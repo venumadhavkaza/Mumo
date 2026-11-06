@@ -6,7 +6,6 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager2.widget.ViewPager2;
 
-import com.google.android.material.color.DynamicColors;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.spotify.android.appremote.api.ConnectionParams;
@@ -20,15 +19,10 @@ import com.spotify.protocol.types.Track;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
-import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -57,12 +51,7 @@ public class MainActivity2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
-        getSupportActionBar().hide();
-        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
-//        getWindow().getDecorView().setBackgroundColor(Color.parseColor("#F5F7DC"));
-        //Menu menu = new
-        DynamicColors.applyIfAvailable(this);
-        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        // Theme.Mumo is a NoActionBar theme, so there is no support action bar to hide here.
 
 
 
@@ -102,12 +91,8 @@ public class MainActivity2 extends AppCompatActivity {
 
 
 
-        if (Build.VERSION.SDK_INT >= 21) {
-            Window window = this.getWindow();
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            window.setStatusBarColor(this.getResources().getColor(R.color.colorPrimary));
-        }
+        // Status/navigation bar color now comes from Theme.Mumo (themes.xml) so every
+        // screen is consistent instead of each Activity picking its own color at runtime.
         bubbleTabBar = findViewById(R.id.bubbleTabBar);
 //        Fragment m = new mood();
 //        Fragment mu = new musiclist();

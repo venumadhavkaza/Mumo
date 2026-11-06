@@ -1,6 +1,5 @@
 package com.venumadhav.mumo;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
@@ -60,7 +59,7 @@ public class userprofile extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private SpotifyAuthHandler spotifyAuthHandler;
     Context thiscontext;
-    DatabaseReference mdatabasereference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://mumo-91024-default-rtdb.firebaseio.com/");
+    DatabaseReference mdatabasereference = MumoDatabase.getReference();
     // TODO: Rename and change types of parameters
     private RecyclerView messagesRecyclerView;
     private MessagesAdapter messagesAdapter;
@@ -142,12 +141,8 @@ public class userprofile extends Fragment {
 
         //profilepic from firebase
 
-        ProgressDialog progressDialog = new ProgressDialog(getContext());
-        progressDialog.setCancelable(false);
-        progressDialog.setMessage("Loading..");
-        progressDialog.show();
-
-
+        final ProgressBar loadingIndicator = view.findViewById(R.id.loadingIndicator);
+        loadingIndicator.setVisibility(View.VISIBLE);
 
         //Toast.makeText(getContext(), mobileno, Toast.LENGTH_SHORT).show();
         String mobile = MainActivity.mobileno;
@@ -158,13 +153,13 @@ public class userprofile extends Fragment {
 //
                 final String profilepicUrl = snapshot.child("users").child(mobile).child("profile_pic").getValue(String.class);
                 Picasso.get().load(profilepicUrl).fit().into(userProfilePic);
-                    progressDialog.dismiss();
+                loadingIndicator.setVisibility(View.GONE);
 //
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                progressDialog.dismiss();
+                loadingIndicator.setVisibility(View.GONE);
             }
         });
 
@@ -206,7 +201,7 @@ public class userprofile extends Fragment {
                                             final String getUserOne = dataSnapshot1.child("user_1").getValue(String.class);
                                             final String getUserTwo = dataSnapshot1.child("user_2").getValue(String.class);
 
-                                            if((getUserOne.equals(getMobile) && getUserTwo.equals(mobile)) || (getUserOne.equals(mobile) && getUserTwo.equals(getMobile))){
+                                            if((Objects.equals(getUserOne, getMobile) && Objects.equals(getUserTwo, mobile)) || (Objects.equals(getUserOne, mobile) && Objects.equals(getUserTwo, getMobile))){
 
                                                 for(DataSnapshot chatDataSnapshot : dataSnapshot1.child("messages").getChildren()){
 

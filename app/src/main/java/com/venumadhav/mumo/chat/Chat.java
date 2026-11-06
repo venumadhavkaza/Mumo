@@ -29,6 +29,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.venumadhav.mumo.MemoryData;
+import com.venumadhav.mumo.MumoDatabase;
 import com.venumadhav.mumo.R;
 import com.squareup.picasso.Picasso;
 
@@ -52,7 +53,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class Chat extends AppCompatActivity {
 
     private final List<ChatList> chatLists = new ArrayList<>();
-    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://mumo-91024-default-rtdb.firebaseio.com/");
+    DatabaseReference databaseReference = MumoDatabase.getReference();
     String getUserMobile = "";
     private String chatKey;
     private RecyclerView chattingRecyclerView;
@@ -120,7 +121,8 @@ public class Chat extends AppCompatActivity {
 
                                 final String messageTimestamps = messagesSnapshot.getKey();
                                 final String getMobile = messagesSnapshot.child("mobile").getValue(String.class);
-                                getMsg = messagesSnapshot.child("msg").getValue(String.class);
+                                final String msgValue = messagesSnapshot.child("msg").getValue(String.class);
+                                getMsg = msgValue != null ? msgValue : "";
                                 Timestamp timestamp = new Timestamp(Long.parseLong(messageTimestamps));
                                 Date date = new Date(timestamp.getTime());
                                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
@@ -146,7 +148,7 @@ public class Chat extends AppCompatActivity {
 
                         }
                         //Toast.makeText(Chat.this, getMsg+"", Toast.LENGTH_SHORT).show();
-                        if(!getMobile.equals(userMobile)&&getMsg.equals("@connect")&&requested==false){
+                        if(getMobile != null && !getMobile.equals(userMobile)&&getMsg.equals("@connect")&&requested==false){
                             if(!canPlay) {
                                 showDialog(Chat.this, "Incoming Connection Request");
                             }

@@ -5,7 +5,7 @@
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F7DC"
+    android:background="?attr/colorSurface"
     android:tag="user"
     tools:context=".userprofile"
     android:orientation="vertical">
@@ -31,7 +31,7 @@
             android:layout_centerInParent="true"
             android:fontFamily="@font/dancingscriptbold"
             android:text="-: Mumo Chat :-"
-            android:textColor="@color/black"
+            android:textColor="?attr/colorOnSurface"
             android:textSize="23sp" />
 
         <de.hdodenhof.circleimageview.CircleImageView
@@ -47,11 +47,26 @@
 
     </RelativeLayout>
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/messagesRecyclerView"
-
             android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingTop="8dp" />
+
+        <ProgressBar
+            android:id="@+id/loadingIndicator"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            />
+            android:layout_gravity="center"
+            android:indeterminateTint="@color/colorOfStatusBar" />
+
+    </FrameLayout>
 
 </LinearLayout>

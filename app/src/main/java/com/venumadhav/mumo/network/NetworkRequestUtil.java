@@ -15,6 +15,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.squareup.picasso.Picasso;
+import com.venumadhav.mumo.MumoDatabase;
 import com.venumadhav.mumo.chat.ChatAdapter;
 import com.venumadhav.mumo.mood;
 
@@ -76,7 +77,7 @@ public class NetworkRequestUtil extends AsyncTask<Dummyclass,Void,PeekaLinkRespo
     @Override
     protected void onPostExecute(PeekaLinkResponse peekaLinkResponse) {
         super.onPostExecute(peekaLinkResponse);
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://mumo-91024-default-rtdb.firebaseio.com/");
+        DatabaseReference databaseReference = MumoDatabase.getReference();
 
         Picasso.get().load(peekaLinkResponse.getImage().getUrl()).into(ChatAdapter.MyViewHolder.myimg);
     }
