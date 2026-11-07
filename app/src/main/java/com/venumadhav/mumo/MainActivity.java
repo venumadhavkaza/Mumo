@@ -140,8 +140,9 @@ public class MainActivity extends AppCompatActivity {
                 firebaseAuthWithGoogle(account.getIdToken());
 
             } catch (ApiException e) {
-                // Google Sign In failed, update UI appropriately
                 Log.w(TAG, "Google sign in failed", e);
+                // Status 10 (DEVELOPER_ERROR) means this APK's SHA-1 isn't registered in Firebase.
+                Toast.makeText(this, "Google sign-in failed (code " + e.getStatusCode() + ")", Toast.LENGTH_LONG).show();
             }
         }
     }
@@ -166,6 +167,8 @@ public class MainActivity extends AppCompatActivity {
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
+                            String reason = task.getException() != null ? task.getException().getMessage() : "unknown error";
+                            Toast.makeText(MainActivity.this, "Firebase sign-in failed: " + reason, Toast.LENGTH_LONG).show();
                             updateUI(null);
                         }
                     }
